@@ -1,0 +1,47 @@
+{
+ "measured": "2026-09-25",
+ "method": "24 app detail pages, random.seed(20260925) over 27,071 slugs",
+ "median_page_kb": 179,
+ "fields": {
+  "name": {
+   "present": 24,
+   "of": 24
+  },
+  "ratingValue": {
+   "present": 11,
+   "of": 24
+  },
+  "ratingCount": {
+   "present": 11,
+   "of": 24
+  },
+  "price": {
+   "present": 0,
+   "of": 24
+  },
+  "author": {
+   "present": 0,
+   "of": 24
+  },
+  "applicationCategory": {
+   "present": 24,
+   "of": 24,
+   "note": "constant 'DeveloperApplication', not a real category"
+  }
+ },
+ "review_counts": {
+  "min": 1,
+  "median": 5,
+  "max": 753,
+  "zero": 0
+ },
+ "finding": "aggregateRating is absent on 13 of 24 apps, and the review counts on the 11 that have it start at 1 with NO zeros. An app with no reviews carries no aggregateRating block at all, so the denominator is missing exactly where it would say nobody uses this. Any rating analysis over fetched pages is a survivors' average unless the absent ones are counted as zero -- and their absence is the datum.",
+ "not_available": [
+  "price",
+  "publisher/author",
+  "install count",
+  "real category",
+  "app size",
+  "advertising"
+ ]
+}
