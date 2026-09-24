@@ -54,15 +54,55 @@ notes: >-
   explicitly permitted. This needs a longest-match robots evaluator to get right,
   which is why the engine pin is v0.6.58.
 
+  FOUR ENTITIES, NOT ONE. The sitemap index has EIGHT types per locale, and four
+  are worth capturing. Measured live 2026-09-25:
+
+    sitemap_apps_en.xml              4.66 MB   27,122 apps
+    sitemap_partners_en.xml          3.05 MB   17,168 publishers
+    sitemap_category_features_en.xml 0.75 MB    2,612 category-feature pages
+    sitemap_categories_en.xml        0.03 MB      161 categories
+
+  Together 8.5 MB against 4.66 for apps alone. Collections (170), stories (107),
+  built-in features (29) and extensions (3) are marketing surfaces, not entities
+  with a life, and are left out.
+
+  PUBLISHERS ARE THE PRIZE AND THEIR BACKFILL DOES NOT JOIN. `do whole publishers
+  exit` was unanswerable from apps alone. It is answerable going forward, because
+  partners have their own list and their own disappearances. But the historical
+  flat sitemap held 50,153 partner handles in 2026-01 against 17,168 today, and
+  only 10,853 overlap -- 78% of the old set gone in 254 days. That is not
+  credible as real churn, so it is either a purge of dormant partner pages or a
+  scope change in what the sitemap covered. UNRESOLVED: do not compute partner
+  survival across the URL change until someone works out which. The apps list
+  joins at 89.9% and is safe; partners are not.
+
+  WHAT IS STILL NOT FREE. Ratings, pricing, install counts, the app-to-publisher
+  link and anything resembling advertising live only on detail pages at ~285 KB
+  each -- 7.7 GB for an app census. Sample if a rating series is ever wanted.
+  Never census. The slug itself is the only free semantic signal: tokens like
+  `seo`, `bundle`, `shipping`, `ai` support a niche taxonomy at zero cost.
+
 endpoints:
   - url: "https://apps.shopify.com/sitemap_apps_en.xml"
     delay_seconds: 2
     timeout_seconds: 120
+  - url: "https://apps.shopify.com/sitemap_partners_en.xml"
+    delay_seconds: 2
+    timeout_seconds: 120
+  - url: "https://apps.shopify.com/sitemap_categories_en.xml"
+    delay_seconds: 2
+    timeout_seconds: 60
+  - url: "https://apps.shopify.com/sitemap_category_features_en.xml"
+    delay_seconds: 2
+    timeout_seconds: 90
 
 gates:
   expect_status: 200
   # 4.66 MB today. A sitemap under 1 MB has changed shape, not merely shrunk.
-  min_bytes: 1000000
+  # The smallest captured sitemap (categories) is ~30 KB; apps is 4.66 MB.
+  # One floor has to clear the smallest, so it cannot catch a truncated apps file.
+  # must_contain does that instead.
+  min_bytes: 20000
   content_type_any: [xml, text]
   must_contain: ["<urlset", "apps.shopify.com/"]
   max_shrink_pct: 40

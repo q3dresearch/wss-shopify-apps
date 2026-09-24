@@ -10,7 +10,7 @@ timestamp and a SHA-256 of exactly what came back.
 
 | source | publisher | cadence | status | last captured |
 | --- | --- | --- | --- | --- |
-| `shopify.appstore.listings` | Shopify | weekly | active | — |
+| `shopify.appstore.listings` | Shopify | weekly | active | 2026-09-24 |
 
 ## Each source in full
 
@@ -19,18 +19,32 @@ timestamp and a SHA-256 of exactly what came back.
 **Shopify** (first party) · weekly · active
 
 Every app in the Shopify App Store, weekly, from the publisher's own sitemap.
-THIS IS THE STRONGEST WSS CASE IN THE CATALOGUE, AND THE REASON IS WHAT IT LACKS. The Internet Archive holds ZERO mementos of sitemap_apps_en.xml. Snowflake had 46 and Salesforce 29, which means somebody else partly holds those. Here nobody does. There is no backfill to mine and no survival curve on day one -- and that is precisely the argument for capturing: every week not recorded is gone permanently, and after a year this repo is the only record that exists of which Shopify apps were on sale.
-It was nearly rejected for exactly that. Ranking candidates by "can a chart be drawn today" is a larder instinct; for a wss, an absent archive is the strongest possible signal, not the weakest.
+A BACKFILL EXISTS, AND THE FIRST SCREEN MISSED IT. This source was catalogued and shipped claiming ZERO Internet Archive coverage, on the basis that sitemap_apps_en.xml has no mementos. That URL has none. But apps.shopify.com/ sitemap.xml has 112, back to 2014, and 54 of them are large enough to carry apps -- because UNTIL RECENTLY THE INDEX WAS THE APP LIST, holding 8,537 apps in 2023-06 and 15,433 by 2025-11, and only lately became a set of 184 per-locale children with no apps of its own. Screening one URL and concluding the source was unwatched was the error; the list had moved.
+So 55 snapshots exist, 2023-06-20 to 2026-09-25, and they join: 89.9% of the 2026-01 set is still listed today, so the slugs share one namespace across the URL change. 32,955 apps ever seen, 27,071 alive, 5,884 gone.
+THERE IS A 254-DAY HOLE IN THE MIDDLE. The Archive's last usable capture is 2026-01-13 and the first live one is 2026-09-25. An app that arrived and left inside that window is invisible and always will be, and a departure within it can only be dated to the window's midpoint -- which puts a visible cliff in the survival curve that is an artefact, not an event. The weekly capture is what stops the next hole forming.
 27,122 APPS AND THE SLUG NAMES THE PRODUCT. sitemap_apps_en.xml is 4,659,331 bytes listing /<app-slug> URLs -- avada-shipping-labels, folio-store-locator -- so the sitemap alone says what arrived and what left. The 184 sitemap children are PER LOCALE, so en alone is the whole catalogue; reading "per-locale" as "therefore not apps" is what made this look blocked on the first screen.
 DO NOT FETCH THE DETAIL PAGES. They are ~285 KB each, so a census is roughly 7.7 GB a week. They do carry a real denominator -- schema.org aggregateRating, with ratingCount 3,320 and ratingValue 4.7 on klaviyo-email-marketing -- so a SAMPLE is worth taking if a rating series is ever wanted. A census is not.
 SEARCH IS CLOSED, THE SITEMAP IS NOT. robots blocks `Disallow: /*?*`, which closes /search?q= and every other query form. The sitemap and /browse/ are explicitly permitted. This needs a longest-match robots evaluator to get right, which is why the engine pin is v0.6.58.
+FOUR ENTITIES, NOT ONE. The sitemap index has EIGHT types per locale, and four are worth capturing. Measured live 2026-09-25:
+
+  sitemap_apps_en.xml              4.66 MB   27,122 apps
+  sitemap_partners_en.xml          3.05 MB   17,168 publishers
+  sitemap_category_features_en.xml 0.75 MB    2,612 category-feature pages
+  sitemap_categories_en.xml        0.03 MB      161 categories
+
+Together 8.5 MB against 4.66 for apps alone. Collections (170), stories (107), built-in features (29) and extensions (3) are marketing surfaces, not entities with a life, and are left out.
+PUBLISHERS ARE THE PRIZE AND THEIR BACKFILL DOES NOT JOIN. `do whole publishers exit` was unanswerable from apps alone. It is answerable going forward, because partners have their own list and their own disappearances. But the historical flat sitemap held 50,153 partner handles in 2026-01 against 17,168 today, and only 10,853 overlap -- 78% of the old set gone in 254 days. That is not credible as real churn, so it is either a purge of dormant partner pages or a scope change in what the sitemap covered. UNRESOLVED: do not compute partner survival across the URL change until someone works out which. The apps list joins at 89.9% and is safe; partners are not.
+WHAT IS STILL NOT FREE. Ratings, pricing, install counts, the app-to-publisher link and anything resembling advertising live only on detail pages at ~285 KB each -- 7.7 GB for an app census. Sample if a rating series is ever wanted. Never census. The slug itself is the only free semantic signal: tokens like `seo`, `bundle`, `shipping`, `ai` support a niche taxonomy at zero cost.
 
 - <https://apps.shopify.com/sitemap_apps_en.xml>
+- <https://apps.shopify.com/sitemap_partners_en.xml>
+- <https://apps.shopify.com/sitemap_categories_en.xml>
+- <https://apps.shopify.com/sitemap_category_features_en.xml>
 
 - **Licence / terms:** NOT ESTABLISHED (checked 2026-09-25). apps.shopify.com/robots.txt permits /browse/ and the sitemaps and blocks every query string (Disallow: /*?*). No licence statement found; Shopify's terms have not been read for a redistribution grant. The capture is a list of public URLs the publisher advertises to crawlers, not app content.
 - **Personal data:** none
 - **Publisher keeps history:** no — this source destroys its own history
-- **Last stored capture:** 2026-09-24T16:43:53Z · `raw/shopify.appstore.listings/2026/09/20260924T164353Z-f41ff8e6fdf6.xml.gz` · sha256 `f41ff8e6fdf6…`
+- **Last stored capture:** 2026-09-24T17:24:43Z · `raw/shopify.appstore.listings/2026/09/20260924T172443Z-fc7f7c8740b2.xml.gz` · sha256 `fc7f7c8740b2…`
 
 ## Reusing this data
 

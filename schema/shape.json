@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T16:44:05Z",
+  "generated_at": "2026-09-24T17:25:27Z",
   "note": "Inferred from the derived rows by `wss schema`, not hand-written. Regenerate after any derive.",
   "sources": {
     "shopify.appstore.listings": {
@@ -11,11 +11,11 @@
       "storage": "git",
       "publisher": "Shopify",
       "publisher_tier": "first_party",
-      "endpoints": 1
+      "endpoints": 4
     }
   },
   "observations": {
-    "rows": 27071,
+    "rows": 148218,
     "columns": [
       "series_id",
       "entity_id",
@@ -33,14 +33,15 @@
     ],
     "series": {
       "shopify.appstore.listings": {
-        "rows": 27071,
-        "entities": 27071,
+        "rows": 148218,
+        "entities": 47038,
         "entity_id_samples": [
-          "011bq-product-swatcher",
-          "1-all-in-one-image-optimizer",
-          "1-click-auto-ai-seo-llms-txt"
+          "app:011bq-product-swatcher",
+          "app:1-all-in-one-image-optimizer",
+          "app:1-click-auto-ai-seo-llms-txt"
         ],
         "metrics": [
+          "kind",
           "listed"
         ]
       }
@@ -50,14 +51,30 @@
     ]
   },
   "metrics": {
+    "kind": {
+      "rows": 74109,
+      "unit": "",
+      "type": "text",
+      "series": [
+        "shopify.appstore.listings"
+      ],
+      "entities": 47038,
+      "distinct_values": 4,
+      "empty": 0,
+      "samples": [
+        "app",
+        "category",
+        "category_feature"
+      ]
+    },
     "listed": {
-      "rows": 27071,
+      "rows": 74109,
       "unit": "count",
       "type": "bool",
       "series": [
         "shopify.appstore.listings"
       ],
-      "entities": 27071,
+      "entities": 47038,
       "distinct_values": 1,
       "empty": 0,
       "samples": [
@@ -66,10 +83,10 @@
     }
   },
   "raw": {
-    "files": 1,
-    "bytes_on_disk": 289148,
+    "files": 4,
+    "bytes_on_disk": 511377,
     "capture_dates": 1,
     "first_capture": "2026-09-24T16:43:53Z",
-    "last_capture": "2026-09-24T16:43:53Z"
+    "last_capture": "2026-09-24T17:24:43Z"
   }
 }
