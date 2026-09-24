@@ -1,0 +1,2 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+shopify.appstore.listings,https://apps.shopify.com/sitemap_apps_en.xml,2026-09-24T16:43:53Z,200,application/xml,4661311,f41ff8e6fdf6523f2702ff2235a767d7f8848fce8edea5c11d0622a67bf2a5fe,"W/""f41ff8e6fdf6523f2702ff2235a767d7""",,first_capture,raw/shopify.appstore.listings/2026/09/20260924T164353Z-f41ff8e6fdf6.xml.gz,,

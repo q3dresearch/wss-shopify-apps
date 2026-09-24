@@ -1,0 +1,60 @@
+source_id: shopify.appstore.listings
+status: active
+cadence: weekly
+schema_id: shopifyapp.v1
+
+publisher: Shopify
+publisher_tier: first_party
+
+# An app that is delisted simply leaves the sitemap. There is no status meaning
+# removed, and -- unlike every other marketplace screened -- NOBODY ELSE IS
+# KEEPING A COPY.
+destroys_own_history: true
+
+licence: "NOT ESTABLISHED (checked 2026-09-25). apps.shopify.com/robots.txt permits /browse/ and the sitemaps and blocks every query string (Disallow: /*?*). No licence statement found; Shopify's terms have not been read for a redistribution grant. The capture is a list of public URLs the publisher advertises to crawlers, not app content."
+personal_data: none            # app listings; developer names are not in the sitemap
+storage: git
+
+notes: >-
+  Every app in the Shopify App Store, weekly, from the publisher's own sitemap.
+
+  THIS IS THE STRONGEST WSS CASE IN THE CATALOGUE, AND THE REASON IS WHAT IT
+  LACKS. The Internet Archive holds ZERO mementos of sitemap_apps_en.xml.
+  Snowflake had 46 and Salesforce 29, which means somebody else partly holds
+  those. Here nobody does. There is no backfill to mine and no survival curve on
+  day one -- and that is precisely the argument for capturing: every week not
+  recorded is gone permanently, and after a year this repo is the only record
+  that exists of which Shopify apps were on sale.
+
+  It was nearly rejected for exactly that. Ranking candidates by "can a chart be
+  drawn today" is a larder instinct; for a wss, an absent archive is the
+  strongest possible signal, not the weakest.
+
+  27,122 APPS AND THE SLUG NAMES THE PRODUCT. sitemap_apps_en.xml is 4,659,331
+  bytes listing /<app-slug> URLs -- avada-shipping-labels, folio-store-locator --
+  so the sitemap alone says what arrived and what left. The 184 sitemap children
+  are PER LOCALE, so en alone is the whole catalogue; reading "per-locale" as
+  "therefore not apps" is what made this look blocked on the first screen.
+
+  DO NOT FETCH THE DETAIL PAGES. They are ~285 KB each, so a census is roughly
+  7.7 GB a week. They do carry a real denominator -- schema.org aggregateRating,
+  with ratingCount 3,320 and ratingValue 4.7 on klaviyo-email-marketing -- so a
+  SAMPLE is worth taking if a rating series is ever wanted. A census is not.
+
+  SEARCH IS CLOSED, THE SITEMAP IS NOT. robots blocks `Disallow: /*?*`, which
+  closes /search?q= and every other query form. The sitemap and /browse/ are
+  explicitly permitted. This needs a longest-match robots evaluator to get right,
+  which is why the engine pin is v0.6.58.
+
+endpoints:
+  - url: "https://apps.shopify.com/sitemap_apps_en.xml"
+    delay_seconds: 2
+    timeout_seconds: 120
+
+gates:
+  expect_status: 200
+  # 4.66 MB today. A sitemap under 1 MB has changed shape, not merely shrunk.
+  min_bytes: 1000000
+  content_type_any: [xml, text]
+  must_contain: ["<urlset", "apps.shopify.com/"]
+  max_shrink_pct: 40

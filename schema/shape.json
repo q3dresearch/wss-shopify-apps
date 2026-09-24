@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-09-24T16:44:05Z",
+  "note": "Inferred from the derived rows by `wss schema`, not hand-written. Regenerate after any derive.",
+  "sources": {
+    "shopify.appstore.listings": {
+      "source_id": "shopify.appstore.listings",
+      "schema_id": "shopifyapp.v1",
+      "cadence": "weekly",
+      "licence": "NOT ESTABLISHED (checked 2026-09-25). apps.shopify.com/robots.txt permits /browse/ and the sitemaps and blocks every query string (Disallow: /*?*). No licence statement found; Shopify's terms have not been read for a redistribution grant. The capture is a list of public URLs the publisher advertises to crawlers, not app content.",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "Shopify",
+      "publisher_tier": "first_party",
+      "endpoints": 1
+    }
+  },
+  "observations": {
+    "rows": 27071,
+    "columns": [
+      "series_id",
+      "entity_id",
+      "observed_at",
+      "captured_at",
+      "metric",
+      "value",
+      "unit",
+      "source_id",
+      "raw_ref",
+      "parser_version"
+    ],
+    "partitions": [
+      "2026-09.csv.gz"
+    ],
+    "series": {
+      "shopify.appstore.listings": {
+        "rows": 27071,
+        "entities": 27071,
+        "entity_id_samples": [
+          "011bq-product-swatcher",
+          "1-all-in-one-image-optimizer",
+          "1-click-auto-ai-seo-llms-txt"
+        ],
+        "metrics": [
+          "listed"
+        ]
+      }
+    },
+    "parser_versions": [
+      "1"
+    ]
+  },
+  "metrics": {
+    "listed": {
+      "rows": 27071,
+      "unit": "count",
+      "type": "bool",
+      "series": [
+        "shopify.appstore.listings"
+      ],
+      "entities": 27071,
+      "distinct_values": 1,
+      "empty": 0,
+      "samples": [
+        "1"
+      ]
+    }
+  },
+  "raw": {
+    "files": 1,
+    "bytes_on_disk": 289148,
+    "capture_dates": 1,
+    "first_capture": "2026-09-24T16:43:53Z",
+    "last_capture": "2026-09-24T16:43:53Z"
+  }
+}

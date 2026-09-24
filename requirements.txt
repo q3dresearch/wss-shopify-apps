@@ -1,0 +1,9 @@
+# This repo pins one engine version; the workflows install the same pin
+# (resolving the owner as ${{ github.repository_owner }}). For local
+# development against a sibling checkout: pip install -e ../wss
+#
+# v0.6.58 for the longest-match robots evaluator. apps.shopify.com blocks every
+# query string (Disallow: /*?*) while permitting /browse/ and the sitemaps, and
+# an engine that reads those rules first-match rather than longest-match will
+# get the verdict wrong in one direction or the other.
+wss[object] @ git+https://github.com/q3dresearch/wss-engine.git@v0.6.58

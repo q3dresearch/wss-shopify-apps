@@ -1,0 +1,37 @@
+# Licence of the captured data
+
+**Crawl permission: established. Reuse: not established.**
+
+## Crawling
+
+Checked 2026-09-25. `apps.shopify.com/robots.txt` permits `/browse/` and the
+sitemaps, and disallows every query string:
+
+    Disallow: /internal/
+    Disallow: /services/
+    Disallow: /*?*shpxid=*
+    Disallow: /*?*auth=*
+
+plus a blanket `Disallow: /*?*` form covering query URLs, which closes
+`/search?q=`. The captured endpoint, `sitemap_apps_en.xml`, carries no query
+string and is permitted.
+
+Evaluated with longest-match (`wss.robots`) as RFC 9309 and Google specify, not
+`urllib.robotparser`, which returns the first matching rule and is wrong on rule
+sets of this shape.
+
+## Reuse
+
+**Unaddressed.** No licence statement appears in the sitemap or on the store
+pages, and Shopify's terms have not been read for a redistribution grant. Do not
+assert one.
+
+What this repository holds is **a list of URLs the publisher publishes for search
+engines**, plus counts derived from it. There is no app content — no description,
+no pricing, no developer, no screenshots — because the sitemap contains none and
+the detail pages are deliberately not fetched.
+
+## Personal data
+
+None. The sitemap carries app slugs only. Developer names appear on detail pages,
+which this repo does not capture.
