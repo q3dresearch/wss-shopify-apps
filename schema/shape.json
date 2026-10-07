@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T11:21:19Z",
+  "generated_at": "2026-10-07T11:59:41Z",
   "note": "Inferred from the derived rows by `wss schema`, not hand-written. Regenerate after any derive.",
   "sources": {
     "shopify.appstore.listings": {
@@ -15,7 +15,7 @@
     }
   },
   "observations": {
-    "rows": 243166,
+    "rows": 339052,
     "columns": [
       "series_id",
       "entity_id",
@@ -29,12 +29,13 @@
       "parser_version"
     ],
     "partitions": [
-      "2026-09.csv.gz"
+      "2026-09.csv.gz",
+      "2026-10.csv.gz"
     ],
     "series": {
       "shopify.appstore.listings": {
-        "rows": 243166,
-        "entities": 47752,
+        "rows": 339052,
+        "entities": 48386,
         "entity_id_samples": [
           "app:011bq-product-swatcher",
           "app:1-all-in-one-image-optimizer",
@@ -52,13 +53,13 @@
   },
   "metrics": {
     "kind": {
-      "rows": 121583,
+      "rows": 169526,
       "unit": "",
       "type": "text",
       "series": [
         "shopify.appstore.listings"
       ],
-      "entities": 47752,
+      "entities": 48386,
       "distinct_values": 4,
       "empty": 0,
       "samples": [
@@ -68,13 +69,13 @@
       ]
     },
     "listed": {
-      "rows": 121583,
+      "rows": 169526,
       "unit": "count",
       "type": "bool",
       "series": [
         "shopify.appstore.listings"
       ],
-      "entities": 47752,
+      "entities": 48386,
       "distinct_values": 1,
       "empty": 0,
       "samples": [
@@ -83,10 +84,10 @@
     }
   },
   "raw": {
-    "files": 7,
-    "bytes_on_disk": 996553,
-    "capture_dates": 2,
+    "files": 11,
+    "bytes_on_disk": 1517180,
+    "capture_dates": 3,
     "first_capture": "2026-09-24T16:43:53Z",
-    "last_capture": "2026-09-30T11:21:12Z"
+    "last_capture": "2026-10-07T11:59:32Z"
   }
 }
