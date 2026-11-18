@@ -1,12 +1,12 @@
 # Data shape
 
-*Generated 2026-11-11T12:57:01Z by `wss schema` from the derived rows. Do not hand-edit — regenerate after any derive.*
+*Generated 2026-11-18T14:32:45Z by `wss schema` from the derived rows. Do not hand-edit — regenerate after any derive.*
 
 **You should not need to download anything to read this.**
 
-- **786,672 observations** across 3 partition(s), in **1 series**
-  - `shopify.appstore.listings` — 786,672 rows, **54686 entities**
-- Raw: 30 file(s), 3,673,276 bytes on disk, 8 capture date(s), 2026-09-24 → 2026-11-11
+- **892,448 observations** across 3 partition(s), in **1 series**
+  - `shopify.appstore.listings` — 892,448 rows, **55838 entities**
+- Raw: 34 file(s), 4,193,366 bytes on disk, 9 capture date(s), 2026-09-24 → 2026-11-18
 
 ## Sources
 
@@ -26,8 +26,8 @@ series_id, entity_id, observed_at, captured_at, metric, value, unit, source_id, 
 
 | metric | series | rows | entities | type | unit | distinct | range / samples |
 | --- | --- | ---: | ---: | --- | --- | ---: | --- |
-| `kind` | shopify.appstore.listings | 393,336 | 54686 | text |  | 4 | `app`, `category`, `category_feature` |
-| `listed` | shopify.appstore.listings | 393,336 | 54686 | bool | count | 1 | `1` |
+| `kind` | shopify.appstore.listings | 446,224 | 55838 | text |  | 4 | `app`, `category`, `category_feature` |
+| `listed` | shopify.appstore.listings | 446,224 | 55838 | bool | count | 1 | `1` |
 
 ## Partitions
 
